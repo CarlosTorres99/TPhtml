@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHARLY'S GYM - Tu Gimnasio</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* Estilos específicos para el contador */
+        .contador-container {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: #333; /* Color del texto */
+        }
+
+        .contador {
+            display: inline-block;
+            overflow: hidden; /* Importante para el efecto de "enrollado" */
+            height: 1em; /* Ajusta según el tamaño de la fuente */
+            line-height: 1em;
+        }
+
+        .contador span {
+            display: block;
+            transform: translateY(0);
+            transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Efecto de aceleración/desaceleración */
+        }
+
+        .contador.animado span {
+            transform: translateY(-1em); /* Desplaza el número para mostrar el siguiente */
+        }
+
+        .texto-fijo {
+            display: inline-block;
+            margin-left: 0.2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#">CHARLY'S GYM</a>
+            </div>
+            <nav>
+                <ul class="mega-menu">
+                    <li>
+                        <a href="#">INICIO</a>
+                    </li>
+                    <li class="nav-link active">
+                        <a href="clases.html">CLASES</a>
+                        <div class="mega-menu-content">
+                            <div class="column">
+                                <ul>
+                                    <li><a href="#">Musculación</a></li>
+                                    <li><a href="#">CrossFit</a></li>
+                                    <li><a href="#">Yoga</a></li>
+                                    <li><a href="#">Spinning</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="entrenadores.html">ENTRENADORES</a>
+                    </li>
+                    <li>
+                        <a href="precios.html">PRECIOS</a>
+                    </li>
+                    <li>
+                        <a href="blog.html">BLOG</a>
+                    </li>
+                    <li>
+                        <a href="contacto.html">CONTACTO</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="hero-image">
+            <img src="img/entrenando.gif" alt="Entrenamiento en el gimnasio">
+        </div>
+        <div class="hero-content">
+            <h1>Alcanzá tu mejor versión</h1>
+            <p>Entrená con los mejores, superá tus límites</p>
+            <a href="clases.html" class="button">Ver Clases</a>
+        </div>
+       
+    </section>
+    <section>
+        <div class="contador-container">
+            <div class="contador" data-count="500">
+                <span>0</span>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+                <span>0</span>
+            </div>
+            <span class="texto-fijo">500 socios satisfechos</span>
+        </div>
+    </section>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contadorElement = document.querySelector('.contador');
+            const targetCount = parseInt(contadorElement.getAttribute('data-count'));
+            const duration = 2000; // Duración de la animación en milisegundos
+            const steps = Math.min(targetCount, 10); // Número de "pasos" en la animación
+
+            function animateCounter() {
+                let currentCount = 0;
+                const increment = Math.ceil(targetCount / steps);
+                const intervalTime = duration / steps;
+
+                const interval = setInterval(() => {
+                    currentCount += increment;
+                    if (currentCount >= targetCount) {
+                        currentCount = targetCount;
+                        clearInterval(interval);
+                        contadorElement.classList.add('animado');
+                        // Opcional: Remover la clase después de la animación si no se repite
+                        // setTimeout(() => {
+                        //     contadorElement.classList.remove('animado');
+                        // }, 1000);
+                    }
+
+                    const countString = String(currentCount);
+                    const spans = contadorElement.querySelectorAll('span');
+
+                    countString.split('').forEach((digit, index) => {
+                        if (spans[index]) {
+                            spans[index].style.transform = `translateY(-${parseInt(digit)}em)`;
+                        }
+                    });
+
+                    // Añadir el "+" al final si el número es mayor que 9
+                    if (targetCount > 9 && !contadorElement.textContent.includes('+')) {
+                        const lastSpan = spans[spans.length - 1];
+                        if (lastSpan) {
+                            lastSpan.textContent = '+';
+                            lastSpan.style.transform = `translateY(-${10}em)`; // Posición para el "+"
+                        }
+                    }
+                }, intervalTime);
+            }
+
+            // Iniciar la animación cuando el elemento entra en la vista (opcional)
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter();
+                        observer.unobserve(contadorElement); // Detener la observación después de la animación
+                    }
+                });
+            });
+
+            observer.observe(contadorElement);
+        });
+    </script>
+
+    <footer>
+        <div class="map">
+            <h3>Ubicación</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.516237998399!2d-65.3008492855243!3d-24.19097378400185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x942e391520c3b337%3A0x7c115724984c117d!2sFacultad%20de%20Ingenier%C3%ADa%20-%20UNJu!5e0!3m2!1ses-419!2sar!4v1633007892345!5m2!1ses-419!2sar"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="container">
+            <div class="newsletter">
+                <h3>Suscríbete a nuestro Newsletter</h3>
+                <form>
+                    <input type="email" placeholder="Tu correo electrónico">
+                    <button type="submit">Suscribirse</button>
+                </form>
+            </div>
+            <div class="social">
+                <h3>Síguenos</h3>
+                <ul>
+                    <li><a href="#"><img src="img/facebook-icon.png" alt="Facebook"></a></li>
+                    <li><a href="#"><img src="img/twitter-icon.png" alt="Twitter"></a></li>
+                    <li><a href="#"><img src="img/instagram-icon.png" alt="Instagram"></a></li>
+                </ul>
+            </div>
+            
+            <p>&copy; 2025 Gimnasio CHARLIE'S. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

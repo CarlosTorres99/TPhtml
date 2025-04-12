@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHARLY'S GYM - Tu Gimnasio</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#">CHARLY'S GYM</a>
+            </div>
+            <nav>
+                <ul class="mega-menu">
+                    <li>
+                        <a href="index.html">INICIO</a>
+                    </li>
+                    <li class="nav-link active">
+                        <a href="clases.html">CLASES</a>
+                        <div class="mega-menu-content">
+                            <div class="column">
+                                <ul>
+                                    <li><a href="#">Musculación</a></li>
+                                    <li><a href="#">CrossFit</a></li>
+                                    <li><a href="#">Yoga</a></li>
+                                    <li><a href="#">Spinning</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="entrenadores.html">ENTRENADORES</a>
+                    </li>
+                    <li>
+                        <a href="#">PRECIOS</a>
+                    </li>
+                    <li>
+                        <a href="blog.html">BLOG</a>
+                    </li>
+                    <li>
+                        <a href="contacto.html">CONTACTO</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <section id="precios-planes">
+            <h2>Nuestros Planes</h2>
+
+            <div class="toggle-container">
+                <input type="radio" id="mensual" name="plan" value="mensual" checked>
+                <label for="mensual">Mensual</label>
+                <input type="radio" id="anual" name="plan" value="anual">
+                <label for="anual">Anual <span class="discount">-15%</span></label>
+            </div>
+
+            <div class="pricing-table-container">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Básico</th>
+                            <th>Estándar</th>
+                            <th>Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="feature">
+                            <td>Acceso al gimnasio</td>
+                            <td data-tooltip="Incluye acceso a todas las áreas comunes del gimnasio">✓</td>
+                            <td data-tooltip="Incluye acceso a todas las áreas comunes del gimnasio">✓</td>
+                            <td data-tooltip="Incluye acceso ilimitado a todas las áreas del gimnasio">✓</td>
+                        </tr>
+                        <tr class="feature">
+                            <td>Clases grupales</td>
+                            <td data-tooltip="Acceso a clases grupales básicas (ej. cardio)">3 por semana</td>
+                            <td data-tooltip="Acceso a la mayoría de las clases grupales">Ilimitado</td>
+                            <td data-tooltip="Acceso ilimitado a todas las clases grupales">Ilimitado</td>
+                        </tr>
+                        <tr class="feature">
+                            <td>Entrenamiento personalizado</td>
+                            <td>✗</td>
+                            <td data-tooltip="1 sesión de entrenamiento personalizado al mes">1 sesión/mes</td>
+                            <td data-tooltip="2 sesiones de entrenamiento personalizado al mes">2 sesiones/mes</td>
+                        </tr>
+                        <tr class="feature">
+                            <td>Planes de nutrición</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                            <td data-tooltip="Plan de nutrición personalizado incluido">✓</td>
+                        </tr>
+                        <tr class="price-row">
+                            <td>Precio</td>
+                            <td data-price-mensual="$40" data-price-anual="$408">$40</td>
+                            <td data-price-mensual="$60" data-price-anual="$612">$60</td>
+                            <td data-price-mensual="$80" data-price-anual="$816">$80</td>
+                        </tr>
+                        <tr class="action-row">
+                            <td></td>
+                            <td><a href="#" class="button">Elegir Básico</a></td>
+                            <td><a href="#" class="button destacado">Elegir Estándar</a></td>
+                            <td><a href="#" class="button">Elegir Premium</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <div class="map">
+            <h3>Ubicación</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.516237998399!2d-65.3008492855243!3d-24.19097378400185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x942e391520c3b337%3A0x7c115724984c117d!2sFacultad%20de%20Ingenier%C3%ADa%20-%20UNJu!5e0!3m2!1ses-419!2sar!4v1633007892345!5m2!1ses-419!2sar"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="container">
+            <div class="newsletter">
+                <h3>Suscríbete a nuestro Newsletter</h3>
+                <form>
+                    <input type="email" placeholder="Tu correo electrónico">
+                    <button type="submit">Suscribirse</button>
+                </form>
+            </div>
+            <div class="social">
+                <h3>Síguenos</h3>
+                <ul>
+                    <li><a href="#"><img src="img/facebook-icon.png" alt="Facebook"></a></li>
+                    <li><a href="#"><img src="img/twitter-icon.png" alt="Twitter"></a></li>
+                    <li><a href="#"><img src="img/instagram-icon.png" alt="Instagram"></a></li>
+                </ul>
+            </div>
+            
+            <p>&copy; 2025 Gimnasio CHARLIE'S. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
